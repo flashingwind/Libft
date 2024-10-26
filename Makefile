@@ -1,6 +1,6 @@
 SRCS = ft_additonal_iter.c ft_additonal_putfd.c ft_additonal_string.c \
        ft_additonal_strjoin.c ft_ctype.c ft_ctype2.c ft_stdlib.c \
-	   ft_string_bsd.c ft_string.c
+	   ft_string_bsd.c ft_string.c ft_string2.c
 CC = clang
 AR = ar
 CFLAGS = -Wall -Wextra -Werror -std=c99

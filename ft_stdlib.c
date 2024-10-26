@@ -6,16 +6,14 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:29:37 by miida             #+#    #+#             */
-/*   Updated: 2024/10/26 00:53:51 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/26 20:37:00 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
+#include <stdint.h>
 #include <stdlib.h>
-// #include <limits.h>
-// #include <stddef.h>
-// #include <stdio.h>
-// #include <unistd.h>
 
 static int	ft_isspace(const char c)
 {
@@ -62,7 +60,7 @@ static unsigned char	*get_null_str(void)
 {
 	unsigned char	*dst;
 
-	dst = malloc(sizeof(char));
+	dst = (unsigned char *)malloc(sizeof(char));
 	*dst = '\0';
 	return (dst);
 }
@@ -71,9 +69,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*p;
 
-	if (nmemb * size == 0)
-		p = get_null_str();
-	p = malloc(size * sizeof(unsigned char));
+	if (nmemb <= 0 || size <= 0 || INT_MAX < size || SIZE_MAX / size < nmemb
+		|| nmemb > SIZE_MAX / size)
+		return (get_null_str());
+	p = (unsigned char *)malloc(nmemb * size * sizeof(unsigned char));
 	return ((void *)p);
 }
 

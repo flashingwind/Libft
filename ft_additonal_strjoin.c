@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:13:11 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/26 00:47:02 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/26 20:40:07 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static size_t	ft_strcpy_ret_size(char *dest, const char *src)
 	size_t	i;
 
 	i = 0;
-	while (*src != '\0')
+	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	*dest = '\0';
+	dest[i] = '\0';
 	return (i);
 }
 
@@ -31,12 +31,11 @@ static char	*get_null_str(void)
 {
 	char	*dst;
 
-	dst = malloc(sizeof(char));
+	dst = (char *)malloc(sizeof(char));
 	*dst = '\0';
 	return (dst);
 }
 
-// char	*ft_strjoin(int size, char **strs, char *sep)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dst;
@@ -46,7 +45,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
 	if (len == 0)
 		return (get_null_str());
-	dst = malloc(len * sizeof(char));
+	dst = (char *)malloc(len * sizeof(char));
 	if (dst == NULL)
 		return (NULL);
 	dst_head = dst;
