@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:38:37 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/26 20:36:23 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/29 01:08:04 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static char	*get_null_str(void)
 	*dst = '\0';
 	return (dst);
 }
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ss;
@@ -62,6 +63,7 @@ static size_t	count_sect(char const *s, char sep)
 
 	count = 0;
 	while (*s != '\0')
+	{
 		if (*s == sep)
 		{
 			s++;
@@ -72,6 +74,7 @@ static size_t	count_sect(char const *s, char sep)
 			while (*s != '\0' && *s != sep)
 				s++;
 		}
+	}
 	return (count);
 }
 
@@ -101,49 +104,6 @@ char	**ft_split(char const *s, char c)
 	}
 	strs[i] = NULL;
 	return (strs);
-}
-size_t	num_of_digits(int n)
-{
-	size_t	len;
-
-	len = 0;
-	if (n < 0)
-		len++;
-	else if (n == 0)
-		len++;
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-char	*ft_itoa(int n)
-{
-	char	*str;
-	int		len;
-	long	num;
-
-	num = n;
-	len = num_of_digits(num);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	str[len] = '\0';
-	if (num == 0)
-		str[0] = '0';
-	if (num < 0)
-	{
-		str[0] = '-';
-		num *= -1;
-	}
-	while (num > 0)
-	{
-		str[len] = '0' + (num % 10);
-		num /= 10;
-		len--;
-	}
-	return (str);
 }
 
 // #include <stdio.h>

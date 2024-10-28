@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:14:55 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/26 01:22:13 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/29 03:05:12 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	skip;
+	unsigned int	dst_len;
 	unsigned int	i;
 
-	skip = ft_strlen(dst);
-	if (skip < size)
-		return (size + ft_strlen(src));
+	dst_len = ft_strlen(dst);
+	if (dst_len < size)
+		return (dst_len + ft_strlen(src));
 	i = 0;
-	while (src[i] != '\0' && (skip + i) < (size - 1))
+	while (src[i] != '\0' && (dst_len + i) < (size - 1))
 	{
-		dst[skip + i] = src[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	dst[skip + i] = '\0';
+	dst[dst_len + i] = '\0';
 	while (src[i] != '\0')
 		i++;
-	return (skip + i);
+	return (dst_len + i);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
@@ -60,25 +60,24 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	char	*p_big;
 
+	if (little == NULL || little[0] == '\0' || big == little)
+		return ((char *)big);
 	j = 0;
-	p_big = (char *)big;
-	while (*p_big != '\0' && j < len)
+	while (big[j] != '\0' && j < len)
 	{
 		i = 0;
-		while (p_big[i] == little[i] && p_big[i] != '\0')
+		while (big[j + i] != '\0' && little[i] != '\0' && j + i < len)
 		{
-			if (p_big[i] == '\0' && little[i] != '\0')
-				return (NULL);
+			if (big[j + i] != little[i])
+				break ;
 			i++;
 		}
 		if (little[i] == '\0')
-			return (p_big);
-		p_big++;
+			return ((char *)(big + j));
 		j++;
 	}
-	return (p_big);
+	return (NULL);
 }
 
 /* Original */

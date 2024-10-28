@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:29:37 by miida             #+#    #+#             */
-/*   Updated: 2024/10/26 20:37:00 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/29 03:07:27 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(const char *s)
 	while (ft_isspace(*s))
 		s++;
 	sign = 1;
-	while (*s == '-' || *s == '+')
+	if (*s == '-' || *s == '+')
 	{
 		sign *= sign_to_int(*s);
 		s++;
@@ -65,13 +65,15 @@ static unsigned char	*get_null_str(void)
 	return (dst);
 }
 
+// calloc behave differ on BSD and Linux?
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*p;
 
-	if (nmemb <= 0 || size <= 0 || INT_MAX < size || SIZE_MAX / size < nmemb
-		|| nmemb > SIZE_MAX / size)
+	if (nmemb == 0 || size == 0)
 		return (get_null_str());
+	else if (SIZE_MAX / size < nmemb)
+		return (NULL);
 	p = (unsigned char *)malloc(nmemb * size * sizeof(unsigned char));
 	return ((void *)p);
 }

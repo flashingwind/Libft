@@ -1,84 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string2.c                                       :+:      :+:    :+:   */
+/*   ft_string3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:07:53 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/29 01:56:34 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/28 00:08:14 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
+
+// #include <stddef.h>
 #include <stdlib.h>
 
-// memset() は s で示されるメモリ領域の先頭から n バイトを c で埋める。memset()は s へのポインタを返す。
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	unsigned char	*p;
+	char	*s2;
+	size_t	len;
 
-	p = (unsigned char *)s;
-	while (n > 0)
-	{
-		*(p++) = (unsigned char)c;
-		n--;
-	}
-	return (s);
-}
-
-//   bzero() 関数は バイト列 s から始まる領域の先頭 n バイトを 数値ゼロ (値が '\0' のバイト) で埋める。
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, '\0', n);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	char	*ss;
-
-	ss = (char *)s;
-	while (*ss != '\0')
-	{
-		if (*ss == (char)c)
-			return (ss);
-		ss++;
-	}
-	if (*ss == (char)c)
-		return (ss);
-	return (NULL);
-}
-
-char	*ft_strrchr(const char *s, int c)
-{
-	char	*ss;
-	char	*p;
-
-	p = NULL;
-	ss = (char *)s;
-	while (*ss != '\0')
-	{
-		if (*ss == (char)c)
-			p = ss;
-		ss++;
-	}
-	if (*ss == (char)c)
-		p = ss;
-	return (p);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	if (n == 0)
-		return (0);
-	i = 0;
-	while (i < n - 1 && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
+	len = ft_strlen(s);
+	s2 = (char *)malloc((len + 1) * sizeof(char));
+	if (s2 == NULL)
+		return (NULL);
+	ft_strlcpy(s2, s, len + 1);
+	return (s2);
 }
 
 // #include <stdbool.h>
