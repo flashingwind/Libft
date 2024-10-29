@@ -70,6 +70,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*p;
 
+	p = NULL;
 	if (nmemb == 0 || size == 0)
 		return (get_null_str());
 	else if (SIZE_MAX / size < nmemb)

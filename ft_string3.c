@@ -56,27 +56,8 @@ char	*ft_strdup(const char *s)
 // 	// 	printf("strchr: %s\n", strchr(s2, 'c'));
 // 	// 	printf("ft_strrchr: %s\n", ft_strrchr(s3, 'c'));
 // 	// 	printf("strrchr: %s\n", strrchr(s4, 'c'));
-// 	// 	printf("ft_strncmp: %d\n", ft_strncmp(s1, s2, 5));
-// 	// 	printf("strncmp: %d\n", strncmp(s1, s2, 5));
 
-// 	write(1, "ft_strncmp\t: ", 13);
 
-// 	check(ft_strncmp("t", "", 0) == 0);
-// 	check(ft_strncmp("1234", "1235", 3) == 0);
-// 	check(ft_strncmp("1234", "1235", 4) < 0);
-// 	check(ft_strncmp("1234", "1235", -1) < 0);
-// 	check(ft_strncmp("", "", 42) == 0);
-// 	check(ft_strncmp("Tripouille", "Tripouille", 42) == 0);
-// 	check(ft_strncmp("Tripouille", "tripouille", 42) < 0);
-// 	check(ft_strncmp("Tripouille", "TriPouille", 42) > 0);
-// 	check(ft_strncmp("Tripouille", "TripouillE", 42) > 0);
-// 	check(ft_strncmp("Tripouille", "TripouilleX", 42) < 0);
-// 	check(ft_strncmp("Tripouille", "Tripouill", 42) > 0);
-// 	check(ft_strncmp("", "1", 0) == 0);
-// 	check(ft_strncmp("1", "", 0) == 0);
-// 	check(ft_strncmp("", "1", 1) < 0);
-// 	check(ft_strncmp("1", "", 1) > 0);
-// 	check(ft_strncmp("", "", 1) == 0);
 // 	write(1, "\n", 1);
 // 	return (0);
 // }
