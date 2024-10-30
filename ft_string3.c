@@ -6,13 +6,11 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:07:53 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/28 00:08:14 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/31 00:57:05 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// #include <stddef.h>
 #include <stdlib.h>
 
 char	*ft_strdup(const char *s)
@@ -56,7 +54,6 @@ char	*ft_strdup(const char *s)
 // 	// 	printf("strchr: %s\n", strchr(s2, 'c'));
 // 	// 	printf("ft_strrchr: %s\n", ft_strrchr(s3, 'c'));
 // 	// 	printf("strrchr: %s\n", strrchr(s4, 'c'));
-
 
 // 	write(1, "\n", 1);
 // 	return (0);

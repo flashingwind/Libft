@@ -1,39 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_additonal_strjoin.c                             :+:      :+:    :+:   */
+/*   ft_additonal_string2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:13:11 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/26 20:40:07 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/31 00:56:20 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	ft_strcpy_ret_size(char *dest, const char *src)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (i);
-}
-
 static char	*get_null_str(void)
 {
 	char	*dst;
 
 	dst = (char *)malloc(sizeof(char));
+	if (dst == NULL)
+		return (dst);
 	*dst = '\0';
 	return (dst);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*ss;
+	size_t	s_len;
+
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (s_len <= start)
+		return (get_null_str());
+	if (s_len - start < len)
+		len = s_len - start;
+	ss = (char *)malloc(sizeof(char) * (len + 1));
+	if (ss == NULL)
+		return (NULL);
+	ft_strlcpy(ss, s + start, len + 1);
+	return (ss);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	start;
+	size_t	end;
+
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	return (ft_substr(s1, start, end - start));
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -49,8 +72,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (dst == NULL)
 		return (NULL);
 	dst_head = dst;
-	dst_head += ft_strcpy_ret_size(dst_head, s1);
-	dst_head += ft_strcpy_ret_size(dst_head, s2);
+	dst_head += ft_strlcpy(dst_head, s1, len + 1);
+	dst_head += ft_strlcpy(dst_head, s2, len + 1);
 	*dst_head = '\0';
 	return (dst);
 }

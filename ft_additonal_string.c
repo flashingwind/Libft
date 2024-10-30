@@ -6,56 +6,12 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:38:37 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/29 01:08:04 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/31 00:21:10 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static char	*get_null_str(void)
-{
-	char	*dst;
-
-	dst = (char *)malloc(sizeof(char));
-	*dst = '\0';
-	return (dst);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*ss;
-	size_t	s_len;
-
-	if (s == NULL)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (get_null_str());
-	if (len > s_len - start)
-		len = s_len - start;
-	ss = (char *)malloc(sizeof(char) * (len + 1));
-	if (ss == NULL)
-		return (NULL);
-	ft_strlcpy(ss, s + start, len + 1);
-	return (ss);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	start;
-	size_t	end;
-
-	if (s1 == NULL || set == NULL)
-		return (NULL);
-	start = 0;
-	end = ft_strlen(s1);
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	while (end > start && ft_strchr(set, s1[end - 1]))
-		end--;
-	return (ft_substr(s1, start, end - start));
-}
 
 static size_t	count_sect(char const *s, char sep)
 {

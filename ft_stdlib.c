@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:29:37 by miida             #+#    #+#             */
-/*   Updated: 2024/10/29 03:07:27 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/31 00:14:42 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,22 @@ int	ft_atoi(const char *s)
 	return (num);
 }
 
-static unsigned char	*get_null_str(void)
-{
-	unsigned char	*dst;
-
-	dst = (unsigned char *)malloc(sizeof(char));
-	*dst = '\0';
-	return (dst);
-}
-
-// calloc behave differ on BSD and Linux?
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*p;
+	void	*p;
 
-	p = NULL;
 	if (nmemb == 0 || size == 0)
-		return (get_null_str());
+		return ((void *)malloc(sizeof(char)));
 	else if (SIZE_MAX / size < nmemb)
 		return (NULL);
 	p = (unsigned char *)malloc(nmemb * size * sizeof(unsigned char));
+	if (p == NULL)
+		return (p);
+	ft_bzero(p, size * nmemb);
 	return ((void *)p);
 }
 
 /*MAIN
-
 #include <stdlib.h>
 #include <string.h>
 
