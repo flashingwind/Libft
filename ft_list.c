@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:24:50 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/31 02:12:12 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/31 04:52:53 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
 	if (lst == NULL || new_node == NULL)
 	{
+		return ;
 	}
 	else if (*lst == NULL)
 	{
@@ -46,15 +47,23 @@ void	ft_lstadd_back(t_list **lst, t_list *new_node)
 	else
 	{
 		*lst = ft_lstlast(*lst);
-		(*lst)->next = new_node;
-		*lst = (*lst)->next;
+		if (*lst == NULL)
+		{
+			*lst = new_node;
+		}
+		else
+		{
+			(*lst)->next = new_node;
+			*lst = (*lst)->next;
+		}
 	}
 }
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst == NULL || del == NULL)
+	if (lst == NULL)
 		return ;
-	del(lst->content);
+	if (lst->content != NULL && del != NULL)
+		del(lst->content);
 	free(lst);
 }

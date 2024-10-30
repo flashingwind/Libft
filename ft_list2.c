@@ -6,11 +6,13 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:29:07 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/31 01:55:56 by muiida           ###   ########.fr       */
+/*   Updated: 2024/10/31 05:49:37 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
+#include <stdio.h>
 
 int	ft_lstsize(t_list *lst)
 {
@@ -27,22 +29,22 @@ int	ft_lstsize(t_list *lst)
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst->next != NULL)
+	while (lst != NULL && lst->next != NULL)
 		lst = lst->next;
 	return (lst);
 }
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*nxt;
+	t_list	*tmp;
 
 	if (lst == NULL || del == NULL)
 		return ;
 	while (*lst != NULL)
 	{
-		nxt = (*lst)->next;
+		tmp = (*lst)->next;
 		ft_lstdelone(*lst, del);
-		*lst = nxt;
+		*lst = tmp;
 	}
 }
 
@@ -59,22 +61,26 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*new_node;
+	t_list	*new_lst_front;
+	t_list	*new_lst_back;
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	new_lst = NULL;
+	new_lst_front = ft_lstnew(f(lst->content));
+	if (new_lst_front == NULL)
+		return (0);
+	new_lst_back = new_lst_front;
 	while (lst != NULL)
 	{
-		new_node = ft_lstnew(f(lst->content));
-		if (new_node == NULL)
+		new_lst_back->next = ft_lstnew(f(lst->content));
+		if (new_lst_back->next == NULL)
 		{
-			ft_lstclear(&new_lst, del);
+			ft_lstclear(&new_lst_front, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, new_node);
+		new_lst_back->next->next = NULL;
+		new_lst_back = new_lst_back->next;
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (new_lst_front);
 }
