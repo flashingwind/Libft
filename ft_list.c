@@ -6,11 +6,11 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:24:50 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/03 11:43:24 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:42:33 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_bonus.h"
 #include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)
