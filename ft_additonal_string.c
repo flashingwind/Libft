@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:38:37 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/31 00:21:10 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/06 16:04:58 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static size_t	count_sect(char const *s, char sep)
 	size_t	count;
 
 	count = 0;
-	while (*s != '\0')
+	while (s != NULL && *s != '\0')
 	{
 		if (*s == sep)
 		{
@@ -34,17 +34,23 @@ static size_t	count_sect(char const *s, char sep)
 	return (count);
 }
 
+static char	**free_all(char **strs, size_t i)
+{
+	while (i > 0)
+		free(strs[--i]);
+	free(strs);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	size_t	i;
 	size_t	len;
 
-	if (s == NULL)
-		return (NULL);
 	i = 0;
 	strs = (char **)malloc(sizeof(char *) * (count_sect(s, c) + 1));
-	if (strs == NULL)
+	if (s == NULL || strs == NULL)
 		return (NULL);
 	while (*s)
 	{
@@ -53,7 +59,10 @@ char	**ft_split(char const *s, char c)
 			len = 0;
 			while (*s && *s != c && ++len)
 				s++;
-			strs[i++] = ft_substr(s - len, 0, len);
+			strs[i] = ft_substr(s - len, 0, len);
+			if (strs[i] == NULL)
+				return (free_all(strs, i));
+			i++;
 		}
 		else
 			s++;

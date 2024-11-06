@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:14:55 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/29 03:36:38 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/05 17:29:44 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	dst_len = ft_strlen(dst);
+	if (size == 0 || src == NULL || dst == NULL)
+		return (ft_strlen(src));
 	if (size <= dst_len)
 		return (size + ft_strlen(src));
 	i = 0;
