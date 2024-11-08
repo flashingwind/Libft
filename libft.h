@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:06:24 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/06 16:44:19 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/09 01:07:04 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,10 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 // string.h
-// strlen() 関数は文字列 s の長さを計算する。 このとき、終端ヌルバイト ('\0') は計算に含まれない。
 size_t	ft_strlen(const char *s);
-// memset() は s で示されるメモリ領域の先頭から n バイトを c で埋める。memset()は s へのポインタを返す。
 void	*ft_memset(void *p, int c, size_t len);
-//   bzero() 関数は バイト列 s から始まる領域の先頭 n バイトを 数値ゼロ (値が '\0' のバイト) で埋める。
 void	ft_bzero(void *s, size_t n);
 
-// memcpy() はメモリー領域 src の先頭 n バイトを メモリー領域 dest
-// にコピーする。 コピー元の領域とコピー先の領域が重なってはならない。重なっている場合は memmove(3)を使うこと。
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -48,10 +43,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
-// strnstr() 関数は、len 文字より少ない文字列 big の中で、
-// ヌル文字で終了する文字列 little が最初に出現する位置を探します。
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-
 char	*ft_strdup(const char *s);
 
 // stdlib.h
