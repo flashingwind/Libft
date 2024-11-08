@@ -3,10 +3,8 @@ libft/
 libftTester
 Libftest/
 libft-tester-tokyo/
-.vscode/
 .gitignore
 a.out
-
 # Created by https://www.toptal.com/developers/gitignore/api/c,lithium,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,lithium,macos
 
