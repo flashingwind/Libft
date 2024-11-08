@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_string2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:07:53 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/29 01:56:34 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/09 00:03:48 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// memset() は s で示されるメモリ領域の先頭から n バイトを c で埋める。memset()は s へのポインタを返す。
 void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*p;
@@ -29,7 +28,6 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-//   bzero() 関数は バイト列 s から始まる領域の先頭 n バイトを 数値ゼロ (値が '\0' のバイト) で埋める。
 void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, '\0', n);

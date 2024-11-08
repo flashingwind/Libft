@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_additonal_string2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:13:11 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/31 00:56:20 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/09 00:14:37 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ss;
 	size_t	s_len;
+	size_t	d_len;
 
 	if (s == NULL)
 		return (NULL);
@@ -39,7 +40,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ss = (char *)malloc(sizeof(char) * (len + 1));
 	if (ss == NULL)
 		return (NULL);
-	ft_strlcpy(ss, s + start, len + 1);
+	d_len = ft_strlcpy(ss, s + start, len + 1);
+	if (d_len != len + 1)
+	{
+		free(ss);
+		return (NULL);
+	}
 	return (ss);
 }
 
