@@ -6,12 +6,11 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:51:29 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/28 04:39:37 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/10 17:42:55 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <unistd.h>
 
 void	ft_putchar_fd(char c, int fd)
@@ -35,11 +34,24 @@ void	ft_putendl_fd(char *s, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*n_str;
+	char		c[1];
+	long long	num;
 
-	n_str = ft_itoa(n);
-	if (!n_str)
+	num = n;
+	if (num == 0)
+	{
+		write(fd, "0", 1);
 		return ;
-	ft_putstr_fd(n_str, fd);
-	free(n_str);
+	}
+	if (num < 0)
+	{
+		write(fd, "-", 1);
+		num *= -1;
+	}
+	while (num > 0)
+	{
+		c[0] = '0' + (num % 10);
+		num /= 10;
+		write(fd, c, 1);
+	}
 }
