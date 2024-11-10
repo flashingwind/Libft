@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:14:55 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/05 17:29:44 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/10 17:26:44 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dst_len;
 	size_t	i;
 
-	dst_len = ft_strlen(dst);
-	if (size == 0 || src == NULL || dst == NULL)
+	if (size == 0 && src == NULL)
+		return (0);
+	else if (size == 0 && src != NULL)
 		return (ft_strlen(src));
+	dst_len = ft_strlen(dst);
 	if (size <= dst_len)
 		return (size + ft_strlen(src));
 	i = 0;
@@ -63,7 +65,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (little == NULL || little[0] == '\0' || big == little)
+	if (len == 0 && big == NULL)
+		return (NULL);
+	if (little[0] == '\0')
 		return ((char *)big);
 	j = 0;
 	while (big[j] != '\0' && j < len)
