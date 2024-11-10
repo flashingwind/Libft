@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
+/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:06:24 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/09 01:07:04 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/10 14:01:10 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+
 char	*ft_strdup(const char *s);
 
 // stdlib.h
