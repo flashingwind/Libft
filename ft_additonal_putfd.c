@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_additonal_putfd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:51:29 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/10 17:42:55 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/11 01:49:37 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, "-", 1);
 		num *= -1;
 	}
-	while (num > 0)
+	if (num < 10)
 	{
-		c[0] = '0' + (num % 10);
-		num /= 10;
+		c[0] = '0' + num;
 		write(fd, c, 1);
+		return ;
 	}
+	ft_putnbr_fd(num / 10, fd);
+	ft_putnbr_fd(num % 10, fd);
 }

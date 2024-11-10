@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.c                                          :+:      :+:    :+:   */
+/*   ft_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:24:50 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/06 16:42:33 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/11 01:50:53 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new_node)
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst == NULL)
+	if (lst == NULL || del == NULL)
 		return ;
-	if (lst->content != NULL && del != NULL)
-		del(lst->content);
+	del(lst->content);
 	free(lst);
 }
 
