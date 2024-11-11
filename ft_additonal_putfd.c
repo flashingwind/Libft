@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_additonal_putfd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muiida <flashingwind@gmail.com>            +#+  +:+       +#+        */
+/*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:51:29 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/11 01:49:37 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/11 17:31:03 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	unsigned int	len;
 
+	if (s == NULL)
+		return ;
 	len = ft_strlen(s);
 	write(fd, s, len);
 }
