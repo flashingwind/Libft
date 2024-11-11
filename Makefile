@@ -17,7 +17,6 @@ AR = ar
 
 $(NAME): $(OBJS)
 
-#	 $(AR) rcs $@ $(?F)
 
 all: $(NAME) $(HEADER)
 
@@ -36,5 +35,5 @@ clean:
 re: fclean all
 
 # so:
-# 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-# 	gcc -nostartfiles -shared -o libft.so $(OBJS)
+# 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(B_SRCS) $(SRCS)
+# 	gcc -nostartfiles -shared -o libft.so $(B_OBJS) $(OBJS)
