@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_additonal_itoa.c                                :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 01:07:43 by muiida            #+#    #+#             */
-/*   Updated: 2024/10/29 01:13:42 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/14 16:59:12 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-size_t	num_of_digits(int n)
+static size_t	num_of_digits(int n)
 {
 	size_t		len;
 	long long	n2;

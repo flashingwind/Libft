@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdlib.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:29:37 by miida             #+#    #+#             */
-/*   Updated: 2024/10/31 00:14:42 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:50:18 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
-#include <stdint.h>
-#include <stdlib.h>
 
 static int	ft_isspace(const char c)
 {
@@ -55,30 +52,3 @@ int	ft_atoi(const char *s)
 	num *= sign;
 	return (num);
 }
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*p;
-
-	if (nmemb == 0 || size == 0)
-		return ((void *)malloc(sizeof(char)));
-	else if (SIZE_MAX / size < nmemb)
-		return (NULL);
-	p = (unsigned char *)malloc(nmemb * size * sizeof(unsigned char));
-	if (p == NULL)
-		return (p);
-	ft_bzero(p, size * nmemb);
-	return ((void *)p);
-}
-
-/*MAIN
-#include <stdlib.h>
-#include <string.h>
-
-int	main(void)
-{
-	printf("%d\n", ft_atoi(" -----1234ab567"));
-	printf("%d\n", ft_atoi(" \t\r\n---+-++2147483647abc"));
-	printf("%d\n", ft_atoi(" \t\r\n---+--++2147483648abc"));
-}
-//*/

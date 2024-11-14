@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_additonal_string2.c                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:13:11 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/10 19:44:49 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:56:06 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,49 +42,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(ss, s + start, len + 1);
 	return (ss);
 }
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	start;
-	size_t	end;
-
-	if (s1 == NULL || set == NULL)
-		return (NULL);
-	start = 0;
-	end = ft_strlen(s1);
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	while (end > start && ft_strchr(set, s1[end - 1]))
-		end--;
-	return (ft_substr(s1, start, end - start));
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*dst;
-	char	*dst_head;
-	size_t	len;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	dst = (char *)malloc((len + 1) * sizeof(char));
-	if (dst == NULL)
-		return (NULL);
-	dst_head = dst;
-	dst_head += ft_strlcpy(dst_head, s1, len + 1);
-	dst_head += ft_strlcpy(dst_head, s2, len + 1);
-	*dst_head = '\0';
-	return (dst);
-}
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	*strs[3] = {"aaa", "bbb", "0123456789012345678901234567890!"};
-// 	char	*dst;
-
-// 	dst = ft_strjoin(3, strs, "*-");
-// 	printf("%s$\n", dst);
-// }
