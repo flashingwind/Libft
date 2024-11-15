@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:14:55 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:54:56 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 20:25:37 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	if (size == 0)
-	{
-		i = 0;
-		while (src[i] != '\0')
-			i++;
-		return (i);
-	}
+		return (ft_strlen(src));
 	i = 0;
 	while (src[i] != '\0' && i < (size - 1))
 	{
@@ -31,7 +26,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	return (i + ft_strlen(&src[i]));
 }

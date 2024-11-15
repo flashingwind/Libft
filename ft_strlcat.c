@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:14:55 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:54:33 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 20:19:04 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[dst_len + i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (dst_len + i);
+	return (dst_len + i + ft_strlen(&src[i]));
 }
