@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:07:53 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:02:40 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 20:05:56 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	*ft_memset(void *s, int c, size_t n)
 	p = (unsigned char *)s;
 	while (n > 0)
 	{
-		*(p++) = (unsigned char)c;
+		*p = (unsigned char)c;
+		p++;
 		n--;
 	}
 	return (s);
