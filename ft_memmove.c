@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:07:53 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:02:02 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 20:03:22 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (NULL);
 	s = (char *)src;
 	d = (char *)dst;
-	i = 0;
 	if (s < d)
 	{
-		while (0 < len--)
-			d[len] = s[len];
+		i = len;
+		while (0 < i--)
+			d[i] = s[i];
 	}
 	else
 	{
+		i = 0;
 		while (i < len)
 		{
 			d[i] = s[i];
