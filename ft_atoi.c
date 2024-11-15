@@ -48,7 +48,7 @@ int	ft_atoi(const char *s)
 	num = 0;
 	while (ft_isdigit(s[i]))
 	{
-		num = num * 10 + ((long)s[i] - (long)'0');
+		num = num * 10 + ((long)s[i] - (long) '0');
 		if (sign == 1 && num < 0)
 			return ((int)LONG_MAX);
 		else if (sign == -1 && num < 0)
