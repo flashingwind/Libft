@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:29:07 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:46:22 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 19:43:40 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst == NULL || f == NULL)
+	if (f == NULL)
 		return ;
 	while (lst != NULL)
 	{
