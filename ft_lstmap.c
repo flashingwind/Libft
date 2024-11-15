@@ -6,12 +6,11 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 01:29:07 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:46:22 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 19:52:24 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -30,7 +29,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		new_node = ft_lstnew(new_content);
 		if (new_node == NULL)
 		{
-			free(new_content);
+			del(new_content);
 			ft_lstclear(&new_lst_front, del);
 			return (NULL);
 		}
