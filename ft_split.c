@@ -6,18 +6,20 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:38:37 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:52:01 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/15 20:21:05 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	count_sect(char const *s, char sep)
+static size_t	count_sect(char const *str, char sep)
 {
-	size_t	count;
+	size_t	cnt;
+	char	*s;
 
-	count = 0;
+	s = (char *)str;
+	cnt = 0;
 	while (s != NULL && *s != '\0')
 	{
 		if (*s == sep)
@@ -26,12 +28,12 @@ static size_t	count_sect(char const *s, char sep)
 		}
 		else
 		{
-			count++;
+			cnt++;
 			while (*s != '\0' && *s != sep)
 				s++;
 		}
 	}
-	return (count);
+	return (cnt);
 }
 
 static char	**free_all(char **strs, size_t i)
@@ -48,16 +50,16 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	len;
 
-	i = 0;
 	strs = (char **)malloc(sizeof(char *) * (count_sect(s, c) + 1));
 	if (s == NULL || strs == NULL)
 		return (NULL);
+	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
 			len = 0;
-			while (*s && *s != c && ++len)
+			while (*s != '\0' && *s != c && ++len)
 				s++;
 			strs[i] = ft_substr(s - len, 0, len);
 			if (strs[i] == NULL)
