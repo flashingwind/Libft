@@ -6,13 +6,12 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:06:24 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 17:46:22 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/18 15:27:56 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include "libft.h"
 # include <stddef.h>
 
 typedef struct s_list
