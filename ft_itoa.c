@@ -6,10 +6,11 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 01:07:43 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/14 16:59:12 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/18 17:08:04 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 static size_t	num_of_digits(int n)
