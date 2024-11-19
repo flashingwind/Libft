@@ -14,21 +14,20 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -std=c99
 AR = ar
 
-.PHONY: all fclean clean re bonus
-
-$(NAME): $(OBJS)
-
+.PHONY: all fclean clean re bonus so
 
 all: $(NAME) $(HEADER)
 
 bonus: $(B_OBJS) $(OBJS) $(NAME)
+
+$(NAME): $(OBJS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
 	ar rcs $(NAME) $@
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME:%.a=%.so)
 
 clean:
 	rm -f *.o
