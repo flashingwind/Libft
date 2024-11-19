@@ -6,12 +6,11 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 01:07:43 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/18 17:08:04 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/19 15:10:08 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static size_t	num_of_digits(int n)
 {
@@ -40,15 +39,12 @@ static size_t	num_of_digits(int n)
 
 char	*ft_itoa(int n)
 {
-	char		*str;
+	char		str[11];
 	size_t		len;
 	long long	num;
 
 	num = n;
 	len = num_of_digits(num);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
 	str[len--] = '\0';
 	if (num == 0)
 		str[0] = '0';
@@ -63,5 +59,5 @@ char	*ft_itoa(int n)
 		num /= 10;
 		len--;
 	}
-	return (str);
+	return (ft_strdup(str));
 }
