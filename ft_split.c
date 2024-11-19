@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 21:38:37 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/15 20:21:05 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/19 17:40:04 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,26 @@ static char	**free_all(char **strs, size_t i)
 	return (NULL);
 }
 
+static char	**malloc_tab(char const *s, char c)
+{
+	char	**strs;
+
+	if (s == NULL)
+		return (NULL);
+	strs = (char **)malloc(sizeof(char *) * (count_sect(s, c) + 1));
+	if (strs == NULL)
+		return (NULL);
+	return (strs);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	size_t	i;
 	size_t	len;
 
-	strs = (char **)malloc(sizeof(char *) * (count_sect(s, c) + 1));
-	if (s == NULL || strs == NULL)
+	strs = malloc_tab(s, c);
+	if (strs == NULL)
 		return (NULL);
 	i = 0;
 	while (*s)
@@ -72,3 +84,11 @@ char	**ft_split(char const *s, char c)
 	strs[i] = NULL;
 	return (strs);
 }
+
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	ft_split(NULL, '-');
+// 	return (0);
+// }
