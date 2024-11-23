@@ -6,7 +6,7 @@
 /*   By: muiida <muiida@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 01:07:43 by muiida            #+#    #+#             */
-/*   Updated: 2024/11/19 15:10:08 by muiida           ###   ########.fr       */
+/*   Updated: 2024/11/23 19:25:24 by muiida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static size_t	num_of_digits(int n)
 	len = 0;
 	n2 = n;
 	if (n2 == 0)
-	{
-		len++;
-		return (len);
-	}
+		return (1);
 	if (n2 < 0)
 	{
 		n2 = -n2;
@@ -45,7 +42,8 @@ char	*ft_itoa(int n)
 
 	num = n;
 	len = num_of_digits(num);
-	str[len--] = '\0';
+	str[len] = '\0';
+	len--;
 	if (num == 0)
 		str[0] = '0';
 	if (num < 0)
